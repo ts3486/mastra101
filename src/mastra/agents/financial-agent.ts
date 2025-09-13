@@ -3,6 +3,8 @@ import { openai } from '@ai-sdk/openai';
 import { transactionsTool } from '../tools/transactions-tool.js';
 import { getTransactionsTool } from '../tools/get-transactions-tool.js';
 import { memoryTool } from '../tools/memory-tool.js';
+import { Memory } from '@mastra/memory';
+import { LibSQLStore } from '@mastra/libsql';
 
 export const financialAgent = new Agent({
   name: 'Financial Assistant Agent',
@@ -37,4 +39,5 @@ SUCCESS CRITERIA
 - Maintain user trust by ensuring data privacy and security.`,
   model: openai('gpt-4o'),
   tools: { transactionsTool, getTransactionsTool, memoryTool },
+  memory: new Memory({ storage: new LibSQLStore({ url: 'file:./agent-memory.db' }) }),
 });

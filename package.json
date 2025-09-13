@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+  "test": "npx tsc -p tsconfig.json && node --test ./test/memory.spec.mjs",
     "dev": "mastra dev",
-  "check": "ts-node-esm src/mastra/smoke-check.ts",
-  "run-agent": "ts-node-esm src/mastra/run-agent.ts",
+    "check": "ts-node-esm src/mastra/smoke-check.ts",
+    "run-agent": "ts-node-esm src/mastra/run-agent.ts",
     "build": "mastra build",
     "start": "mastra start"
   },
@@ -29,6 +29,6 @@
   "devDependencies": {
     "@types/node": "^24.3.3",
     "mastra": "^0.12.3",
-  "typescript": "^5.9.2"
+    "typescript": "^5.9.2"
   }
 }
